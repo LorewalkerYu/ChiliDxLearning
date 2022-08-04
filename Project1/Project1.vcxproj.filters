@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{7fadd24c-0a77-42bc-98f1-4f3b14dea5fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Window">
+      <UniqueIdentifier>{e5654312-91fa-4118-b363-d2e945e64ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\WIndow">
+      <UniqueIdentifier>{1d113b3a-8493-4c4a-8da6-110ae9f43819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dxerr">
+      <UniqueIdentifier>{db61ef4b-4776-4671-890a-4abdcbcb0278}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\WinMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WindowsMessageMap.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Keyboard.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MYException.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Window.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mouse.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MyTimer.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App.cpp">
+      <Filter>源文件\WIndow</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dxerr\dxerr.cpp">
+      <Filter>dxerr</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DxgiInfoManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\Headers.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Keyboard.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\MYException.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Window.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\WindowsMessageMap.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Mouse.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\MyTimer.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\App.h">
+      <Filter>头文件\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Graphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dxerr\dxerr.h">
+      <Filter>dxerr</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\DxgiInfoManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project1.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="1.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="1 (1).png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="1.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dxerr\DXGetErrorDescription.inl">
+      <Filter>dxerr</Filter>
+    </None>
+    <None Include="dxerr\DXGetErrorString.inl">
+      <Filter>dxerr</Filter>
+    </None>
+    <None Include="dxerr\DXTrace.inl">
+      <Filter>dxerr</Filter>
+    </None>
+  </ItemGroup>
+</Project>

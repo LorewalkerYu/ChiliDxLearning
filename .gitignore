@@ -32,4 +32,4 @@
 *.app
 
 #folders
-/x64
+x64/
