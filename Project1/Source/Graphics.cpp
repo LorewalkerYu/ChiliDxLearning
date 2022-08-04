@@ -65,27 +65,11 @@ Graphics::Graphics(HWND hWnd)
 	));
 
 	// gain access to texture subresource in swap chain (back buffer)
-	ID3D11Resource* pBackBuffer = nullptr;
-	GFX_THROW_INFO(pSwap->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&pBackBuffer)));
-	GFX_THROW_INFO(pDevice->CreateRenderTargetView(pBackBuffer, nullptr, &pTarget));
-	pBackBuffer->Release();
+	wrl::ComPtr<ID3D11Resource> pBackBuffer;
+	GFX_THROW_INFO(pSwap->GetBuffer(0, __uuidof(ID3D11Texture2D), &pBackBuffer));
+	GFX_THROW_INFO(pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget));
 }
 
-Graphics::~Graphics()
-{
-	ReleaseComptr(pDevice);
-	ReleaseComptr(pSwap);
-	ReleaseComptr(pContext);
-	ReleaseComptr(pTarget);
-}
-
-void Graphics::ReleaseComptr(IUnknown* pCom)
-{
-	if (pCom != nullptr)
-	{
-		pCom->Release();
-	}
-}
 
 void Graphics::EndFrame()
 {
@@ -107,6 +91,12 @@ void Graphics::EndFrame()
 		}
 	}
 
+}
+
+void Graphics::ClearBuffer(float red, float green, float blue) noexcept
+{
+	const float color[] = { red,green,blue, 1.0f };
+	pContext->ClearRenderTargetView(pTarget.Get(), color);
 }
 
 // Graphics exception stuff
