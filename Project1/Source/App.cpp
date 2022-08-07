@@ -43,6 +43,6 @@ void App::DoFrame()
 	//wnd.SetTitle(oss.str().c_str());
 	const float c = sin(timer.Peek()) / 2.f + .5f;
 	wnd.Gfx().ClearBuffer(c, c, 1.0f);
-	wnd.Gfx().DrawTriangle();
+	wnd.Gfx().DrawTriangle(timer.Peek());
 	wnd.Gfx().EndFrame();
 }

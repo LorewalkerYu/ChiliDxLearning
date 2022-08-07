@@ -8,6 +8,7 @@
 class Graphics
 {
 public:
+
 	class Exception : public ChiliException
 	{
 		using ChiliException::ChiliException;
@@ -47,8 +48,10 @@ public:
 	private:
 		std::string info;
 	};
+
 public: 
-	void DrawTriangle();
+
+	void DrawTriangle(float angle);
 
 public:
 
