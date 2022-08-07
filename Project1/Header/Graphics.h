@@ -51,7 +51,7 @@ public:
 
 public: 
 
-	void DrawTriangle(float angle);
+	void DrawTriangle(float angle, float x, float y);
 
 public:
 

@@ -15,34 +15,15 @@ int App::Go()
 		}
 		DoFrame();
 	}
-	//// Message Bump
-	//MSG msg;
-	//BOOL gResult;
-	//while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
-	//{
-	//	TranslateMessage(&msg);
-	//	DispatchMessage(&msg);
-	//	DoFrame();
-	//}
-	//if (gResult == -1)
-	//{
-	//	return -1;
-	//}
-	//else
-	//{
-	//	return msg.wParam;
-	//}
-	//return 0;
 }
 
 void App::DoFrame()
 {
-	//const float t = timer.Peek();
-	//std::ostringstream oss;
-	//oss << "Timer elapsed: " << std::setprecision(1) << std::fixed << t << "s";
-	//wnd.SetTitle(oss.str().c_str());
+	std::ostringstream oss;
+	oss << (wnd.mouse.IsInWindow() ? "in" : "out") << "x: " << wnd.mouse.GetPosX() / 400.f - 1.f << "  y: " << wnd.mouse.GetPosY() / 300.f + 1.f;
+	wnd.SetTitle(oss.str().c_str());
 	const float c = sin(timer.Peek()) / 2.f + .5f;
 	wnd.Gfx().ClearBuffer(c, c, 1.0f);
-	wnd.Gfx().DrawTriangle(timer.Peek());
+	wnd.Gfx().DrawTriangle(timer.Peek(), wnd.mouse.GetPosX() / 400.f - 1.f, -wnd.mouse.GetPosY() / 300.f + 1.f);
 	wnd.Gfx().EndFrame();
 }
