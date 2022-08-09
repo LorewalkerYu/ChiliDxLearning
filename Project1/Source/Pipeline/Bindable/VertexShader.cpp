@@ -1,6 +1,5 @@
 #include "../../../Header/Pipeline/Bindable/VertexShader.h"
 
-
 #include <d3dcompiler.h>
 
 #pragma comment(lib, "D3DCompiler.lib")
