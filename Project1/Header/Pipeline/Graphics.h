@@ -1,12 +1,17 @@
 #pragma once
-#include "Headers.h"
+#include "../Headers.h"
 #include<d3d11.h>
 #include <wrl.h>
 #include <vector>
-#include "../Header/MYException.h"
-#include"../Header/DxgiInfoManager.h"
+#include <memory>
+#include <d3dcompiler.h>
+#include <DirectXMath.h>
+#include "../MYException.h"
+#include"DxgiInfoManager.h"
+
 class Graphics
 {
+	friend class Bindable;
 public:
 
 	class Exception : public ChiliException
@@ -50,9 +55,8 @@ public:
 	};
 
 public: 
-
-	void DrawTriangle(float angle, float x, float y);
-
+	void SetProjection(const DirectX::XMMATRIX proj) noexcept;
+	DirectX::XMMATRIX GetProjection() const noexcept;
 public:
 
 	Graphics(HWND hWnd);
@@ -62,8 +66,9 @@ public:
 
 	void EndFrame(); 
 	void ClearBuffer(float red, float green, float blue) noexcept;
-
+	void DrawIndexed(UINT count) noexcept;
 private:
+	DirectX::XMMATRIX projection;
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;
 #endif

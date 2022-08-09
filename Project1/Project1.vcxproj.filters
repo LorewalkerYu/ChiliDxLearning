@@ -51,13 +51,46 @@
     <ClCompile Include="Source\App.cpp">
       <Filter>源文件\WIndow</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics.cpp">
+    <ClCompile Include="Source\Pipeline\Graphics.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dxerr\dxerr.cpp">
       <Filter>dxerr</Filter>
     </ClCompile>
-    <ClCompile Include="Source\DxgiInfoManager.cpp">
+    <ClCompile Include="Source\Pipeline\DxgiInfoManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\Bindable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\IndexBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\VertexBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\InputLayout.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\VertexShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\PixelShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\Topology.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\TransformCBuf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Drawable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\DrawableBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Box.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,13 +122,55 @@
     <ClInclude Include="Header\App.h">
       <Filter>头文件\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Graphics.h">
+    <ClInclude Include="Header\Pipeline\Graphics.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dxerr\dxerr.h">
       <Filter>dxerr</Filter>
     </ClInclude>
-    <ClInclude Include="Header\DxgiInfoManager.h">
+    <ClInclude Include="Header\Pipeline\DxgiInfoManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\Bindable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\IndexBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\GFXMacros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\VertexBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\ConstantBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\InputLayout.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\VertexShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\PixelShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\Topology.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\TransformCBuf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Drawable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\DrawableBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Box.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

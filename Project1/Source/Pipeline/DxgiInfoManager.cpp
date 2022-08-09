@@ -1,6 +1,6 @@
-#include "../Header/DxgiInfoManager.h"
-#include "../Header/Window.h"
-#include "../Header/Graphics.h"
+#include "../../Header/Window.h"
+#include "../../Header/Pipeline/DxgiInfoManager.h"
+#include "../../Header/Pipeline/Graphics.h"
 #include <memory>
 #pragma comment(lib, "dxguid.lib")
 

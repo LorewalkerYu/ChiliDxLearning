@@ -141,10 +141,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\DxgiInfoManager.cpp" />
+    <ClCompile Include="Source\Pipeline\Drawable\Box.cpp" />
+    <ClCompile Include="Source\Pipeline\Drawable\DrawableBase.cpp" />
+    <ClCompile Include="Source\Pipeline\Drawable\Drawable.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\PixelShader.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\InputLayout.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\IndexBuffer.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\Bindable.cpp" />
+    <ClCompile Include="Source\Pipeline\DxgiInfoManager.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="dxerr\dxerr.cpp" />
-    <ClCompile Include="Source\Graphics.cpp" />
+    <ClCompile Include="Source\Pipeline\Graphics.cpp" />
     <ClCompile Include="Source\Keyboard.cpp" />
     <ClCompile Include="Source\Mouse.cpp" />
     <ClCompile Include="Source\MYException.cpp" />
@@ -152,20 +159,38 @@
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\WindowsMessageMap.cpp" />
     <ClCompile Include="Source\WinMain.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\VertexBuffer.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\Topology.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\TransformCBuf.cpp" />
+    <ClCompile Include="Source\Pipeline\Bindable\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header\DxgiInfoManager.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\Box.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\DrawableBase.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\Drawable.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\ConstantBuffer.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\Bindable.h" />
+    <ClInclude Include="Header\Pipeline\DxgiInfoManager.h" />
     <ClInclude Include="Header\App.h" />
     <ClInclude Include="dxerr\dxerr.h" />
-    <ClInclude Include="Header\Graphics.h" />
+    <ClInclude Include="Header\Pipeline\Graphics.h" />
     <ClInclude Include="Header\Headers.h" />
     <ClInclude Include="Header\Keyboard.h" />
     <ClInclude Include="Header\Mouse.h" />
     <ClInclude Include="Header\MYException.h" />
     <ClInclude Include="Header\MyTimer.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\IndexBuffer.h" />
+    <ClInclude Include="Header\Pipeline\GFXMacros.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\InputLayout.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\PixelShader.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Header\Window.h" />
     <ClInclude Include="Header\WindowsMessageMap.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\VertexBuffer.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\Topology.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\TransformCBuf.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc" />
