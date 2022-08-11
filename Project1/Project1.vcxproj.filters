@@ -93,6 +93,12 @@
     <ClCompile Include="Source\Pipeline\Drawable\Box.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Melon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Pyramid.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Headers.h">
@@ -173,6 +179,33 @@
     <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Geometry\Cone.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Geometry\Cube.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Geometry\IndexedTriangleList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Geometry\Plane.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Geometry\Prism.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Geometry\Sphere.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\MyMath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Melon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Pyramid.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -204,5 +237,9 @@
   <ItemGroup>
     <FxCompile Include="Shader\VertexShader.hlsl" />
     <FxCompile Include="Shader\PixelShader.hlsl" />
+    <FxCompile Include="Shader\ColorBlendPS.hlsl" />
+    <FxCompile Include="Shader\ColorIndexPS.hlsl" />
+    <FxCompile Include="Shader\ColorBlendVS.hlsl" />
+    <FxCompile Include="Shader\ColorIndexVS.hlsl" />
   </ItemGroup>
 </Project>

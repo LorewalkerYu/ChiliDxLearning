@@ -1,10 +1,17 @@
 #include "../Header/App.h"
+#include <iostream>
+#include <DirectXMath.h>
+
+
+
 int WINAPI WinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine,
 	int nCmdShow)
 {	
+
+	
 	try
 	{
 		return App{}.Go();
@@ -24,4 +31,5 @@ int WINAPI WinMain(
 	return -1;
 
 }
+
 
