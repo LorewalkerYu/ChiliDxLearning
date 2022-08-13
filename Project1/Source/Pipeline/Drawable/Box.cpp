@@ -2,6 +2,10 @@
 #include "../../../Header/Pipeline/Bindable/BindableBase.h"
 #include "../../../Header/Pipeline/GFXMacros.h"
 #include "../../../Header/Geometry/Cube.h"
+
+#include "../../../Header/Pipeline/Surface.h"
+#include "../../../Header/Pipeline/Bindable/Texture.h"
+#include "../../../Header/Pipeline/Bindable/Sampler.h"
 Box::Box(Graphics& gfx, 
 	std::mt19937& rng, 
 	std::uniform_real_distribution<float>& adist, 
@@ -27,18 +31,24 @@ Box::Box(Graphics& gfx,
 		struct Vertex
 		{
 			dx::XMFLOAT3 pos;
+			struct
+			{
+				float u;
+				float v;
+			} tex;
 		};
 
-		const auto model = Cube::Make<Vertex>();
+		const auto model = Cube::MakeSkinned<Vertex>();
 
 
 
 		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
-
-		auto pVertexShader = std::make_unique<VertexShader>(gfx, L"ColorIndexVS.cso");
+		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\cube.png")));
+		AddStaticBind(std::make_unique<Sampler>(gfx));
+		auto pVertexShader = std::make_unique<VertexShader>(gfx, L"HlslCSO\\TextureVS.cso");
 		auto pVertexShaderBlob = pVertexShader->GetBytecode();
 		AddStaticBind(std::move(pVertexShader));
-		AddStaticBind(std::make_unique<PixelShader>(gfx, L"ColorIndexPS.cso"));
+		AddStaticBind(std::make_unique<PixelShader>(gfx, L"HlslCSO\\TexturePS.cso"));
 
 
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));
@@ -71,7 +81,9 @@ Box::Box(Graphics& gfx,
 
 		const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
 		{
-			{"Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA,0 }
+			{"Position", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA,0 },
+			{ "TexCoord",0,DXGI_FORMAT_R32G32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0 },
+
 		};
 		AddStaticBind(std::make_unique<InputLayout>(gfx, ied, pVertexShaderBlob));
 		AddStaticBind(std::make_unique<Topology>(gfx, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));

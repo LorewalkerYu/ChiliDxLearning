@@ -2,7 +2,13 @@
 #include "../Header/Pipeline/Drawable/Box.h"
 #include "../Header/Pipeline/Drawable/Pyramid.h"
 #include "../Header/Pipeline/Drawable/Melon.h"
+#include "../Header/Pipeline/Drawable/Sheet.h"
 #include "../Header/MyMath.h"
+
+// for gdi initialize
+#include "../Header/GDIPlusManager.h"
+
+GDIPlusManager gdipm;
 App::App()
 	: wnd(800, 600, "A Window")
 {
@@ -27,10 +33,15 @@ App::App()
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist
 					);
-			case 2:
+			case 3:
 				return std::make_unique<Melon>(
 					gfx, rng, adist, ddist,
 					odist, rdist, longdist, latdist
+					);
+			case 2:
+				return std::make_unique<Sheet>(
+					gfx, rng, adist, ddist,
+					odist, rdist
 					);
 			default:
 				assert(false && "bad drawable type in factory");
@@ -85,7 +96,8 @@ void App::DoFrame()
 	wnd.Gfx().ClearBuffer(.07f, 0.f, .12f);
 	for (auto& d : drawables)
 	{
-		d->Update(dt);
+		
+		d->Update(wnd.kbd.KeyIsPressed(VK_SPACE)?0.f:dt);
 		d->Draw(wnd.Gfx());
 	}
 	wnd.Gfx().EndFrame();

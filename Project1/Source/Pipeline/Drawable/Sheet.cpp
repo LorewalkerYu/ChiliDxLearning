@@ -1,10 +1,12 @@
-
-#include "../../../Header/Pipeline/Drawable/Pyramid.h"
-#include "../../../Header/Pipeline/Bindable/BindableBase.h"
+#include "../../../Header/Pipeline/Drawable/Sheet.h"
 #include "../../../Header/Pipeline/GFXMacros.h"
-#include "../../../Header/Geometry/Cone.h"
+#include "../../../Header/Geometry/Plane.h"
+#include "../../../Header/Pipeline/Bindable/BindableBase.h"
+#include "../../../Header/Pipeline/Surface.h"
+#include "../../../Header/Pipeline/Bindable/Texture.h"
+#include "../../../Header/Pipeline/Bindable/Sampler.h"
 
-Pyramid::Pyramid(Graphics& gfx,
+Sheet::Sheet(Graphics& gfx,
 	std::mt19937& rng,
 	std::uniform_real_distribution<float>& adist,
 	std::uniform_real_distribution<float>& ddist,
@@ -31,37 +33,35 @@ Pyramid::Pyramid(Graphics& gfx,
 			dx::XMFLOAT3 pos;
 			struct
 			{
-				unsigned char r;
-				unsigned char g;
-				unsigned char b;
-				unsigned char a;
-			} color;
+				float u;
+				float v;
+			} tex;
 		};
-		auto model = Cone::MakeTesselated<Vertex>(4);
-		// set vertex colors for mesh
-		model.vertices[0].color = { 255,255,0 };
-		model.vertices[1].color = { 255,255,0 };
-		model.vertices[2].color = { 255,255,0 };
-		model.vertices[3].color = { 255,255,0 };
-		model.vertices[4].color = { 255,255,80 };
-		model.vertices[5].color = { 255,10,0 };
-		// deform mesh linearly
-		model.Transform(dx::XMMatrixScaling(1.0f, 1.0f, 0.7f));
+		auto model = Plane::Make<Vertex>();
+		model.vertices[0].tex = { 0.0f,0.0f };
+		model.vertices[1].tex = { 1.0f,0.0f };
+		model.vertices[2].tex = { 0.0f,1.0f };
+		model.vertices[3].tex = { 1.0f,1.0f };
+		
+
+		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\kappa50.png")));
 
 		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
 
-		auto pvs = std::make_unique<VertexShader>(gfx, L"HlslCSO/ColorBlendVS.cso");
+		AddStaticBind(std::make_unique<Sampler>(gfx));
+
+		auto pvs = std::make_unique<VertexShader>(gfx, L"HlslCSO\\TextureVS.cso");
 		auto pvsbc = pvs->GetBytecode();
 		AddStaticBind(std::move(pvs));
 
-		AddStaticBind(std::make_unique<PixelShader>(gfx, L"HlslCSO/ColorBlendPS.cso"));
+		AddStaticBind(std::make_unique<PixelShader>(gfx, L"HlslCSO\\TexturePS.cso"));
 
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));
 
 		const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
 		{
 			{ "Position",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 },
-			{ "Color",0,DXGI_FORMAT_R8G8B8A8_UNORM,0,12,D3D11_INPUT_PER_VERTEX_DATA,0 },
+			{ "TexCoord",0,DXGI_FORMAT_R32G32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0 },
 		};
 		AddStaticBind(std::make_unique<InputLayout>(gfx, ied, pvsbc));
 
@@ -75,7 +75,7 @@ Pyramid::Pyramid(Graphics& gfx,
 	AddBind(std::make_unique<TransformCbuf>(gfx, *this));
 }
 
-void Pyramid::Update(float dt) noexcept
+void Sheet::Update(float dt) noexcept
 {
 	roll += droll * dt;
 	pitch += dpitch * dt;
@@ -85,7 +85,7 @@ void Pyramid::Update(float dt) noexcept
 	chi += dchi * dt;
 }
 
-DirectX::XMMATRIX Pyramid::GetTransformXM() const noexcept
+DirectX::XMMATRIX Sheet::GetTransformXM() const noexcept
 {
 	namespace dx = DirectX;
 	return dx::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *

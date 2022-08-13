@@ -99,6 +99,21 @@
     <ClCompile Include="Source\Pipeline\Drawable\Pyramid.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\Texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Surface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GDIPlusManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Bindable\Sampler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Sheet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Headers.h">
@@ -206,6 +221,21 @@
     <ClInclude Include="Header\Pipeline\Drawable\Pyramid.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Surface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GDIPlusManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\Sampler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Sheet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -241,5 +271,7 @@
     <FxCompile Include="Shader\ColorIndexPS.hlsl" />
     <FxCompile Include="Shader\ColorBlendVS.hlsl" />
     <FxCompile Include="Shader\ColorIndexVS.hlsl" />
+    <FxCompile Include="Shader\TextureVS.hlsl" />
+    <FxCompile Include="Shader\TexturePS.hlsl" />
   </ItemGroup>
 </Project>
