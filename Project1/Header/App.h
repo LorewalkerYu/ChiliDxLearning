@@ -3,22 +3,23 @@
 #include "MyTimer.h"
 #include "ImguiManager.h"
 #include "Pipeline/Camera.h"
+#include "Pipeline/Lights/PointLight.h"
 class App
 {
-public: 
+public:
 	App();
-	~App();
 	// master frame / message loop
 	int Go();
+	~App();
 private:
 	void DoFrame();
-private :
+private:
 	ImguiManager imgui;
-	float speedFactor = 1.f;
-	Camera cam;
 	Window wnd;
 	MyTimer timer;
 	std::vector<std::unique_ptr<class Drawable>> drawables;
+	float speedFactor = 1.0f;
+	Camera cam;
+	PointLight light;
 	static constexpr size_t nDrawables = 180;
 };
-

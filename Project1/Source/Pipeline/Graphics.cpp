@@ -225,7 +225,7 @@ namespace dx = DirectX;
 //	GFX_THROW_INFO_ONLY( pContext->DrawIndexed((UINT)std::size(indices), 0u, 0u));
 //}
 
-void Graphics::SetProjection(const DirectX::XMMATRIX proj) noexcept
+void Graphics::SetProjection(DirectX::FXMMATRIX proj) noexcept
 {
 	projection = proj;
 }
@@ -343,7 +343,10 @@ Graphics::Graphics(HWND hWnd)
 	// init imgui d3d impl
 	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
-
+Graphics::~Graphics()
+{
+	ImGui_ImplDX11_Shutdown();
+}
 
 void Graphics::BeginFrame(float red, float green, float blue) noexcept
 {
@@ -387,13 +390,6 @@ void Graphics::EndFrame()
 	}
 
 }
-
-//void Graphics::ClearBuffer(float red, float green, float blue) noexcept
-//{
-//	const float color[] = { red,green,blue, 1.0f };
-//	pContext->ClearRenderTargetView(pTarget.Get(), color);
-//	pContext->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.f, 0u);
-//}
 
 void Graphics::DrawIndexed(UINT count) noexcept
 {

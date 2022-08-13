@@ -1,8 +1,7 @@
 #include "../Header/App.h"
 #include "../Header/Pipeline/Drawable/Box.h"
 #include "../Header/Pipeline/Drawable/Pyramid.h"
-#include "../Header/Pipeline/Drawable/Melon.h"
-#include "../Header/Pipeline/Drawable/Sheet.h"
+
 #include "../Header/MyMath.h"
 
 // for gdi initialize
@@ -11,8 +10,11 @@ GDIPlusManager gdipm;
 
 #include "../imgui/imgui_impl_dx11.h"
 #include "../imgui/imgui_impl_win32.h"
+
 App::App()
-	: wnd(800, 600, "A Window")
+	:
+	wnd(800, 600, "The Donkey Fart Box"),
+	light(wnd.Gfx())
 {
 	class Factory
 	{
@@ -23,32 +25,14 @@ App::App()
 		{}
 		std::unique_ptr<Drawable> operator()()
 		{
-			switch (typedist(rng))
-			{
-			case 0:
-				return std::make_unique<Pyramid>(
-					gfx, rng, adist, ddist,
-					odist, rdist
-					);
-			case 1:
-				return std::make_unique<Box>(
-					gfx, rng, adist, ddist,
-					odist, rdist, bdist
-					);
-			case 3:
-				return std::make_unique<Melon>(
-					gfx, rng, adist, ddist,
-					odist, rdist, longdist, latdist
-					);
-			case 2:
-				return std::make_unique<Sheet>(
-					gfx, rng, adist, ddist,
-					odist, rdist
-					);
-			default:
-				assert(false && "bad drawable type in factory");
-				return {};
-			}
+			/*return std::make_unique<Pyramid>(
+				gfx, rng, adist, ddist,
+				odist, rdist
+				);*/
+			return std::make_unique<Box>(
+				gfx, rng, adist, ddist,
+				odist, rdist, bdist
+				);
 		}
 	private:
 		Graphics& gfx;
@@ -58,66 +42,58 @@ App::App()
 		std::uniform_real_distribution<float> odist{ 0.0f,PI * 0.08f };
 		std::uniform_real_distribution<float> rdist{ 6.0f,20.0f };
 		std::uniform_real_distribution<float> bdist{ 0.4f,3.0f };
-		std::uniform_int_distribution<int> latdist{ 5,20 };
-		std::uniform_int_distribution<int> longdist{ 10,40 };
-		std::uniform_int_distribution<int> typedist{ 0,2 };
 	};
 
-	Factory f(wnd.Gfx());
 	drawables.reserve(nDrawables);
-
-	std::generate_n
-	(
-		std::back_inserter(drawables),
-		nDrawables, 
-		f
-	);
+	std::generate_n(std::back_inserter(drawables), nDrawables, Factory{ wnd.Gfx() });
 
 	wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f, 40.0f));
-
-}
-App::~App()
-{
-}
-
-int App::Go()
-{
-	while (1)
-	{
-		if (const auto ecode = Window::ProcessMessage())
-		{
-			return *ecode;
-		}
-		DoFrame();
-	}
 }
 
 void App::DoFrame()
 {
-	auto dt = timer.Mark() * speedFactor;
+	const auto dt = timer.Mark() * speedFactor;
+	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
-
-
-	wnd.Gfx().BeginFrame(.07f, 0.f, .12f);
+	light.Bind(wnd.Gfx());
 
 	for (auto& d : drawables)
 	{
-		
-		d->Update(wnd.kbd.KeyIsPressed(VK_SPACE)?0.f:dt);
+		d->Update(wnd.kbd.KeyIsPressed(VK_SPACE) ? 0.0f : dt);
 		d->Draw(wnd.Gfx());
 	}
+	light.Draw(wnd.Gfx());
 
-	static char Buffer[1024];
+	// imgui window to control simulation speed
 	if (ImGui::Begin("Simulation Speed"))
 	{
-		ImGui::SliderFloat("Speed Factor", &speedFactor, 0.f, 4.f, "%.1f");
-		ImGui::Text("Application acerage %.3f ms/frame (%.1f FPS)", 1000.f / ImGui::GetIO().Framerate, 1000.f / ImGui::GetIO().Framerate);
-		ImGui::InputText("Butts", Buffer, sizeof(Buffer));
+		ImGui::SliderFloat("Speed Factor", &speedFactor, 0.0f, 4.0f);
+		ImGui::Text("%.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::Text("Status: %s", wnd.kbd.KeyIsPressed(VK_SPACE) ? "PAUSED" : "RUNNING (hold spacebar to pause)");
 	}
 	ImGui::End();
-	// imgui window camera control
+	// imgui windows to control camera and light
 	cam.SpawnControlWindow();
+	light.SpawnControlWindow();
+
 	// present
 	wnd.Gfx().EndFrame();
+}
 
+App::~App()
+{}
+
+
+int App::Go()
+{
+	while (true)
+	{
+		// process all messages pending, but to not block for new messages
+		if (const auto ecode = Window::ProcessMessage())
+		{
+			// if return optional has value, means we're quitting so return exit code
+			return *ecode;
+		}
+		DoFrame();
+	}
 }
