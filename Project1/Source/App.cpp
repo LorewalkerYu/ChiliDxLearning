@@ -25,10 +25,7 @@ App::App()
 		{}
 		std::unique_ptr<Drawable> operator()()
 		{
-			/*return std::make_unique<Pyramid>(
-				gfx, rng, adist, ddist,
-				odist, rdist
-				);*/
+			
 			const DirectX::XMFLOAT3 mat = { cdist(rng), cdist(rng), cdist(rng) };
 			return std::make_unique<Box>(
 				gfx, rng, adist, ddist,
