@@ -1,6 +1,7 @@
 #include "../Header/App.h"
 #include "../Header/Pipeline/Drawable/Box.h"
 #include "../Header/Pipeline/Drawable/Cylinder.h"
+#include "../Header/Pipeline/Drawable/Pyramid.h"
 #include "../Header/MyMath.h"
 
 // for gdi initialize
@@ -28,15 +29,20 @@ App::App()
 
 			switch (sdist(rng))
 			{
-			case 0:
+	/*		case 0:
 				return std::make_unique<Box>(
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist, mat
-					);
+					);*/
 			case 1:
 				return std::make_unique<Cylinder>(
 					gfx, rng, adist, ddist, odist,
 					rdist, bdist, tdist
+					);
+			case 0:
+				return std::make_unique<Pyramid>(
+					gfx, rng, adist, ddist, odist,
+					rdist, tdist
 					);
 			default:
 				assert(false && "impossible drawable option in factory");
