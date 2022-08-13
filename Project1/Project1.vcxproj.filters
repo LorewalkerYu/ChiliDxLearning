@@ -305,6 +305,9 @@
     <ClInclude Include="Header\Pipeline\Drawable\SolideSphere.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\TestObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">

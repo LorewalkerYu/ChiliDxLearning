@@ -199,6 +199,7 @@
     <ClInclude Include="Header\Pipeline\Drawable\Drawable.h" />
     <ClInclude Include="Header\Pipeline\Bindable\ConstantBuffer.h" />
     <ClInclude Include="Header\Pipeline\Bindable\Bindable.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\TestObject.h" />
     <ClInclude Include="Header\Pipeline\DxgiInfoManager.h" />
     <ClInclude Include="Header\App.h" />
     <ClInclude Include="dxerr\dxerr.h" />
