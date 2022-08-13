@@ -9,7 +9,8 @@ Box::Box(Graphics& gfx,
 	std::uniform_real_distribution<float>& ddist, 
 	std::uniform_real_distribution<float>& odist, 
 	std::uniform_real_distribution<float>& rdist,
-	std::uniform_real_distribution<float>& bdist)
+	std::uniform_real_distribution<float>& bdist,
+	DirectX::XMFLOAT3 material)
 	:
 	r(rdist(rng)),
 	droll(ddist(rng)),
@@ -43,7 +44,6 @@ Box::Box(Graphics& gfx,
 		AddStaticBind(std::move(pVertexShader));
 		AddStaticBind(std::make_unique<PixelShader>(gfx, L"HlslCSO\\PhongPS.cso"));
 
-
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));	
 
 
@@ -63,6 +63,14 @@ Box::Box(Graphics& gfx,
 	// cus every box has its own transform
 	AddBind(std::make_unique<TransformCbuf>(gfx, *this));
 
+	struct PSMaterialConstent
+	{
+		dx::XMFLOAT3 color;
+		float padding;
+	} colorConst;
+
+	colorConst.color = material;
+	AddBind(std::make_unique<PixelConstantBuffer<PSMaterialConstent>>(gfx, colorConst, 1u));
 	// model deformation transform (per instance, not stored as bind)
 	dx::XMStoreFloat3x3(
 		&mt,
