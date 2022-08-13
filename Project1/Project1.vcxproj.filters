@@ -150,6 +150,9 @@
     <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\SkinnedBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Headers.h">
@@ -314,6 +317,9 @@
     <ClInclude Include="Header\Pipeline\Drawable\Cylinder.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\SkinnedBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -358,5 +364,7 @@
     <FxCompile Include="Shader\IndexedPhongPS.hlsl" />
     <FxCompile Include="Shader\BlendPhongPS.hlsl" />
     <FxCompile Include="Shader\BlendPhongVS.hlsl" />
+    <FxCompile Include="Shader\TexturedPhongVS.hlsl" />
+    <FxCompile Include="Shader\TexturedPhongPS.hlsl" />
   </ItemGroup>
 </Project>

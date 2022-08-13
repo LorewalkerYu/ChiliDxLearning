@@ -2,6 +2,7 @@
 #include "../Header/Pipeline/Drawable/Box.h"
 #include "../Header/Pipeline/Drawable/Cylinder.h"
 #include "../Header/Pipeline/Drawable/Pyramid.h"
+#include "../Header/Pipeline/Drawable/SkinnedBox.h"
 #include "../Header/MyMath.h"
 
 // for gdi initialize
@@ -34,10 +35,15 @@ App::App()
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist, mat
 					);*/
-			case 1:
+		/*	case 1:
 				return std::make_unique<Cylinder>(
 					gfx, rng, adist, ddist, odist,
 					rdist, bdist, tdist
+					);*/
+			case 1:
+				return std::make_unique<SkinnedBox>(
+					gfx, rng, adist, ddist, odist,
+					rdist
 					);
 			case 0:
 				return std::make_unique<Pyramid>(

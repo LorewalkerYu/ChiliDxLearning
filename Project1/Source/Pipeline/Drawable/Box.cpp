@@ -64,6 +64,7 @@ Box::Box(Graphics& gfx,
 
 	colorConst.color = material;
 	AddBind(std::make_unique<PixelConstantBuffer<PSMaterialConstent>>(gfx, colorConst, 1u));
+
 	// model deformation transform (per instance, not stored as bind)
 	dx::XMStoreFloat3x3(
 		&mt,
