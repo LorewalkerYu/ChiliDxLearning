@@ -14,6 +14,20 @@ public:
 	virtual void Update(float dt) noexcept = 0;
 	virtual ~Drawable() = default;
 protected:
+
+	// allow to query bindable instance. in order to change perticular bindable
+	template<class T>
+	T* QueryBindable() noexcept
+	{
+		for (auto& pb : binds)
+		{
+			if (auto pt = dynamic_cast<T*>(pb.get()))
+			{
+				return pt;
+			}
+		}
+		return nullptr;
+	}
 	void AddBind(std::unique_ptr<Bindable> bind) noexcept;
 	void AddIndexBuffer(std::unique_ptr<class IndexBuffer> ibuf) noexcept;
 private:

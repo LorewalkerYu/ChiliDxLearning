@@ -1,6 +1,7 @@
 #pragma once
 #pragma once
 #include "DrawableBase.h"
+#include "../../MyMath.h"
 
 template<class T>
 class TestObject : public DrawableBase<T>
@@ -25,12 +26,12 @@ public:
 	{}
 	void Update(float dt) noexcept
 	{
-		roll += droll * dt;
-		pitch += dpitch * dt;
-		yaw += dyaw * dt;
-		theta += dtheta * dt;
-		phi += dphi * dt;
-		chi += dchi * dt;
+		roll = WrapAngle(roll + droll * dt);
+		pitch = WrapAngle(pitch + dpitch * dt);
+		yaw = WrapAngle(yaw + dyaw * dt);
+		theta = WrapAngle(theta + dtheta * dt);
+		phi = WrapAngle(phi + dphi * dt);
+		chi = WrapAngle(chi + dchi * dt);
 	}
 	DirectX::XMMATRIX GetTransformXM() const noexcept
 	{
@@ -39,7 +40,7 @@ public:
 			dx::XMMatrixTranslation(r, 0.0f, 0.0f) *
 			dx::XMMatrixRotationRollPitchYaw(theta, phi, chi);
 	}
-private:
+protected:
 	// positional
 	float r;
 	float roll = 0.0f;
