@@ -147,6 +147,9 @@
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Headers.h">
@@ -308,6 +311,9 @@
     <ClInclude Include="Header\Pipeline\Drawable\TestObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Cylinder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">
@@ -349,5 +355,6 @@
     <FxCompile Include="Shader\PhongVS.hlsl" />
     <FxCompile Include="Shader\SolidVS.hlsl" />
     <FxCompile Include="Shader\SolidPS.hlsl" />
+    <FxCompile Include="Shader\IndexedPhongPS.hlsl" />
   </ItemGroup>
 </Project>

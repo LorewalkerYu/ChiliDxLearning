@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp" />
     <ClCompile Include="Source\Pipeline\Lights\PointLight.cpp" />
     <ClCompile Include="Source\Pipeline\Camera.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="Source\Pipeline\Surface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Pipeline\Drawable\Cylinder.h" />
     <ClInclude Include="Header\Pipeline\Camera.h" />
     <ClInclude Include="Header\GDIPlusManager.h" />
     <ClInclude Include="Header\Geometry\Cone.h" />
@@ -286,6 +288,16 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)/HlslCSO/%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)/HlslCSO/%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Shader\IndexedPhongPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)/HlslCSO/%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)/HlslCSO/%(Filename).cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="Shader\PhongPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
