@@ -141,6 +141,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Pipeline\Camera.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Source\ImguiManager.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\Sheet.cpp" />
     <ClCompile Include="Source\Pipeline\Bindable\Sampler.cpp" />
     <ClCompile Include="Source\GDIPlusManager.cpp" />
@@ -172,6 +181,7 @@
     <ClCompile Include="Source\Pipeline\Surface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Pipeline\Camera.h" />
     <ClInclude Include="Header\GDIPlusManager.h" />
     <ClInclude Include="Header\Geometry\Cone.h" />
     <ClInclude Include="Header\Geometry\Cube.h" />
@@ -179,6 +189,7 @@
     <ClInclude Include="Header\Geometry\Plane.h" />
     <ClInclude Include="Header\Geometry\Prism.h" />
     <ClInclude Include="Header\Geometry\Sphere.h" />
+    <ClInclude Include="Header\ImguiManager.h" />
     <ClInclude Include="Header\MyMath.h" />
     <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h" />
     <ClInclude Include="Header\Pipeline\Drawable\Box.h" />
@@ -201,6 +212,14 @@
     <ClInclude Include="Header\Pipeline\Bindable\PixelShader.h" />
     <ClInclude Include="Header\Pipeline\Drawable\Melon.h" />
     <ClInclude Include="Header\Pipeline\Drawable\Pyramid.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="imgui\imgui_impl_win32.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Header\Window.h" />
     <ClInclude Include="Header\WindowsMessageMap.h" />

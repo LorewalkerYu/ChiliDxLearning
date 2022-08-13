@@ -11,6 +11,8 @@
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "D3DCompiler.lib")
 
+#include "../../imgui/imgui_impl_dx11.h"
+#include "../../imgui/imgui_impl_win32.h"
 namespace wrl = Microsoft::WRL;
 namespace dx = DirectX;
 
@@ -233,6 +235,16 @@ DirectX::XMMATRIX Graphics::GetProjection() const noexcept
 	return projection;
 }
 
+void Graphics::SetCamera(DirectX::FXMMATRIX cam)
+{
+	camera = cam;
+}
+
+DirectX::XMMATRIX Graphics::GetCamera() const noexcept
+{
+	return camera;
+}
+
 Graphics::Graphics(HWND hWnd)
 {
 	DXGI_SWAP_CHAIN_DESC sd = {};
@@ -326,11 +338,36 @@ Graphics::Graphics(HWND hWnd)
 	vp.TopLeftX = 0.0f;
 	vp.TopLeftY = 0.0f;
 	pContext->RSSetViewports(1u, &vp);
+
+
+	// init imgui d3d impl
+	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
 
+void Graphics::BeginFrame(float red, float green, float blue) noexcept
+{
+	if (imguiEnabled)
+	{
+		ImGui_ImplDX11_NewFrame();
+		ImGui_ImplWin32_NewFrame();
+		ImGui::NewFrame();
+	}
+
+	const float color[] = { red,green,blue, 1.0f };
+	pContext->ClearRenderTargetView(pTarget.Get(), color);
+	pContext->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.f, 0u);
+}
+
 void Graphics::EndFrame()
 {
+
+	if (imguiEnabled)
+	{
+		ImGui::Render();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	}
+
 	HRESULT hr;
 
 #ifndef NDEBUG
@@ -351,16 +388,31 @@ void Graphics::EndFrame()
 
 }
 
-void Graphics::ClearBuffer(float red, float green, float blue) noexcept
-{
-	const float color[] = { red,green,blue, 1.0f };
-	pContext->ClearRenderTargetView(pTarget.Get(), color);
-	pContext->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.f, 0u);
-}
+//void Graphics::ClearBuffer(float red, float green, float blue) noexcept
+//{
+//	const float color[] = { red,green,blue, 1.0f };
+//	pContext->ClearRenderTargetView(pTarget.Get(), color);
+//	pContext->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.f, 0u);
+//}
 
 void Graphics::DrawIndexed(UINT count) noexcept
 {
 	GFX_THROW_INFO_ONLY(pContext->DrawIndexed(count, 0u, 0u));
+}
+
+void Graphics::EnableImgui() noexcept
+{
+	imguiEnabled = true;
+}
+
+void Graphics::DiableImgui() noexcept
+{
+	imguiEnabled = false;
+}
+
+bool Graphics::IsImguiEnabled() const noexcept
+{
+	return imguiEnabled;
 }
 
 // Graphics exception stuff

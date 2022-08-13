@@ -7,8 +7,10 @@
 
 // for gdi initialize
 #include "../Header/GDIPlusManager.h"
-
 GDIPlusManager gdipm;
+
+#include "../imgui/imgui_impl_dx11.h"
+#include "../imgui/imgui_impl_win32.h"
 App::App()
 	: wnd(800, 600, "A Window")
 {
@@ -92,13 +94,30 @@ int App::Go()
 
 void App::DoFrame()
 {
-	auto dt = timer.Mark();
-	wnd.Gfx().ClearBuffer(.07f, 0.f, .12f);
+	auto dt = timer.Mark() * speedFactor;
+	wnd.Gfx().SetCamera(cam.GetMatrix());
+
+
+	wnd.Gfx().BeginFrame(.07f, 0.f, .12f);
+
 	for (auto& d : drawables)
 	{
 		
 		d->Update(wnd.kbd.KeyIsPressed(VK_SPACE)?0.f:dt);
 		d->Draw(wnd.Gfx());
 	}
+
+	static char Buffer[1024];
+	if (ImGui::Begin("Simulation Speed"))
+	{
+		ImGui::SliderFloat("Speed Factor", &speedFactor, 0.f, 4.f, "%.1f");
+		ImGui::Text("Application acerage %.3f ms/frame (%.1f FPS)", 1000.f / ImGui::GetIO().Framerate, 1000.f / ImGui::GetIO().Framerate);
+		ImGui::InputText("Butts", Buffer, sizeof(Buffer));
+	}
+	ImGui::End();
+	// imgui window camera control
+	cam.SpawnControlWindow();
+	// present
 	wnd.Gfx().EndFrame();
+
 }

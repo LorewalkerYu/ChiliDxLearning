@@ -119,8 +119,8 @@ void Box::Update(float dt) noexcept
 DirectX::XMMATRIX Box::GetTransformXM() const noexcept
 {
 	return DirectX::XMLoadFloat3x3(&mt) *
-		DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw,roll) *                 // Rotate around box center( = origin)
+		DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *                 // Rotate around box center( = origin)
 		DirectX::XMMatrixTranslation(r, 0.f, 0.f) *             // Translate box away from origin
-		DirectX::XMMatrixRotationRollPitchYaw(theta, phi,chi) *        //Rotate around origin
-		DirectX::XMMatrixTranslation(0.f, 0.f,20.f);            // Translate box away form camera
+		DirectX::XMMatrixRotationRollPitchYaw(theta, phi, chi);         //Rotate around origin
+
 }
