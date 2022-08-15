@@ -156,6 +156,9 @@
     <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pipeline\Drawable\Model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Headers.h">
@@ -327,6 +330,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Pipeline\Vertex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Drawable\Model.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

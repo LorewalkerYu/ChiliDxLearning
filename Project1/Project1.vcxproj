@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Pipeline\Drawable\Model.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\SkinnedBox.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="Header\Pipeline\Lights\PointLight.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\Model.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Header\Window.h" />
     <ClInclude Include="Header\WindowsMessageMap.h" />

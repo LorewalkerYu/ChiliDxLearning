@@ -132,11 +132,11 @@ public:
 
 		bindablePtrs.push_back(std::make_unique<IndexBuffer>(gfx, indices));
 
-		auto pvs = std::make_unique<VertexShader>(gfx, L"PhongVS.cso");
+		auto pvs = std::make_unique<VertexShader>(gfx, L"HlslCSO\\PhongVS.cso");
 		auto pvsbc = pvs->GetBytecode();
 		bindablePtrs.push_back(std::move(pvs));
 
-		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"PhongPS.cso"));
+		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"HlslCSO\\PhongPS.cso"));
 
 		bindablePtrs.push_back(std::make_unique<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc));
 
@@ -174,9 +174,9 @@ public:
 
 		return pNode;
 	}
-	void Draw(Graphics& gfx) const
+	void Draw(Graphics& gfx, DirectX::FXMMATRIX transform) const
 	{
-		pRoot->Draw(gfx, DirectX::XMMatrixIdentity());
+		pRoot->Draw(gfx, transform);
 	}
 private:
 	std::unique_ptr<Node> pRoot;
