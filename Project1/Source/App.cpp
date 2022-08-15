@@ -3,6 +3,7 @@
 #include "../Header/Pipeline/Drawable/Cylinder.h"
 #include "../Header/Pipeline/Drawable/Pyramid.h"
 #include "../Header/Pipeline/Drawable/SkinnedBox.h"
+#include "../Header/Pipeline/Drawable/AssTest.h"
 #include "../Header/MyMath.h"
 
 // for gdi initialize
@@ -12,11 +13,13 @@ GDIPlusManager gdipm;
 #include "../imgui/imgui_impl_dx11.h"
 #include "../imgui/imgui_impl_win32.h"
 
+
 App::App()
 	:
 	wnd(800, 600, "The Donkey Fart Box"),
 	light(wnd.Gfx())
 {
+	
 	class Factory
 	{
 	public:
@@ -35,10 +38,15 @@ App::App()
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist, mat
 					);
-			case 1:
+		/*	case 1:
 				return std::make_unique<Box>(
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist, mat
+					);*/
+			case 1:
+				return std::make_unique<AssTest>(
+					gfx, rng, adist, ddist,
+					odist, rdist, mat, 1.5f
 					);
 			//case 1:
 			//	return std::make_unique<Cylinder>(

@@ -5,6 +5,7 @@
 #include "Pipeline/Camera.h"
 #include "Pipeline/Lights/PointLight.h"
 #include <set>
+
 class App
 {
 public:

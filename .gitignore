@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+!/Project1/Models/*.obj
 
 # Precompiled Headers
 *.gch
@@ -15,7 +16,7 @@
 *.so
 *.dylib
 *.dll
-
+!/x64/Debug/*.dll
 # Fortran module files
 *.mod
 *.smod
@@ -25,7 +26,7 @@
 *.la
 *.a
 *.lib
-
+!/Project1/libs/*.lib
 # Executables
 *.exe
 *.out
