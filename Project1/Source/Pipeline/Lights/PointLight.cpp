@@ -1,5 +1,5 @@
 #include ".././../../Header/Pipeline/Lights/PointLight.h"
-#include "../../../imgui/imgui.h"
+#include "../imgui/imgui.h"
 
 PointLight::PointLight(Graphics& gfx, float radius)
 	:
