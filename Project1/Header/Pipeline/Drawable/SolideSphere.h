@@ -2,6 +2,7 @@
 #include "DrawableBase.h"
 class SolidSphere : public DrawableBase<SolidSphere>
 {
+	
 public:
 	SolidSphere(Graphics& gfx, float radius);
 	void Update(float dt) noexcept override;

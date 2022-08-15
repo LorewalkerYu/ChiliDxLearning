@@ -90,15 +90,6 @@
     <ClCompile Include="Source\Pipeline\Drawable\DrawableBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Box.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Melon.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Pyramid.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Pipeline\Bindable\Texture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -109,9 +100,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Source\Pipeline\Bindable\Sampler.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Sheet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
@@ -147,16 +135,13 @@
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\SkinnedBox.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\Model.cpp">
+    <ClCompile Include="Source\Pipeline\Drawable\Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pipeline\Vertex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -233,10 +218,7 @@
     <ClInclude Include="Header\Pipeline\Drawable\DrawableBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Box.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h">
+    <ClInclude Include="Header\Pipeline\Bindable\BindableCommons.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Geometry\Cone.h">
@@ -260,12 +242,6 @@
     <ClInclude Include="Header\MyMath.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Melon.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Pyramid.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Header\Pipeline\Bindable\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -276,9 +252,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Pipeline\Bindable\Sampler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Sheet.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
@@ -320,19 +293,19 @@
     <ClInclude Include="Header\Pipeline\Drawable\TestObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Cylinder.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\SkinnedBox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Header\Pipeline\Drawable\AssTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Pipeline\Vertex.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\Model.h">
+    <ClInclude Include="Header\Pipeline\Drawable\Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Macros\ConditionalNoexcept.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Pipeline\Color.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

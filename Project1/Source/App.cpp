@@ -1,8 +1,5 @@
 #include "../Header/App.h"
-#include "../Header/Pipeline/Drawable/Box.h"
-#include "../Header/Pipeline/Drawable/Cylinder.h"
-#include "../Header/Pipeline/Drawable/Pyramid.h"
-#include "../Header/Pipeline/Drawable/SkinnedBox.h"
+
 #include "../Header/Pipeline/Drawable/AssTest.h"
 #include "../Header/MyMath.h"
 

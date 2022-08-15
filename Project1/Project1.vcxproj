@@ -151,10 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Pipeline\Drawable\Model.cpp" />
+    <ClCompile Include="Source\Pipeline\Drawable\Mesh.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\SkinnedBox.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\Cylinder.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp" />
     <ClCompile Include="Source\Pipeline\Lights\PointLight.cpp" />
     <ClCompile Include="Source\Pipeline\Camera.cpp" />
@@ -166,12 +164,8 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="Source\ImguiManager.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\Sheet.cpp" />
     <ClCompile Include="Source\Pipeline\Bindable\Sampler.cpp" />
     <ClCompile Include="Source\GDIPlusManager.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\Melon.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\Pyramid.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\Box.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\DrawableBase.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\Drawable.cpp" />
     <ClCompile Include="Source\Pipeline\Bindable\PixelShader.cpp" />
@@ -186,6 +180,7 @@
     <ClCompile Include="Source\Mouse.cpp" />
     <ClCompile Include="Source\MYException.cpp" />
     <ClCompile Include="Source\MyTimer.cpp" />
+    <ClCompile Include="Source\Pipeline\Vertex.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\WindowsMessageMap.cpp" />
     <ClCompile Include="Source\WinMain.cpp" />
@@ -197,8 +192,9 @@
     <ClCompile Include="Source\Pipeline\Surface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Macros\ConditionalNoexcept.h" />
+    <ClInclude Include="Header\Pipeline\Color.h" />
     <ClInclude Include="Header\Pipeline\Drawable\AssTest.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Cylinder.h" />
     <ClInclude Include="Header\Pipeline\Camera.h" />
     <ClInclude Include="Header\GDIPlusManager.h" />
     <ClInclude Include="Header\Geometry\Cone.h" />
@@ -209,8 +205,7 @@
     <ClInclude Include="Header\Geometry\Sphere.h" />
     <ClInclude Include="Header\ImguiManager.h" />
     <ClInclude Include="Header\MyMath.h" />
-    <ClInclude Include="Header\Pipeline\Bindable\BindableBase.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Box.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\BindableCommons.h" />
     <ClInclude Include="Header\Pipeline\Drawable\DrawableBase.h" />
     <ClInclude Include="Header\Pipeline\Drawable\Drawable.h" />
     <ClInclude Include="Header\Pipeline\Bindable\ConstantBuffer.h" />
@@ -229,8 +224,6 @@
     <ClInclude Include="Header\Pipeline\GFXMacros.h" />
     <ClInclude Include="Header\Pipeline\Bindable\InputLayout.h" />
     <ClInclude Include="Header\Pipeline\Bindable\PixelShader.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Melon.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Pyramid.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx11.h" />
@@ -240,7 +233,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="Header\Pipeline\Lights\PointLight.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Model.h" />
+    <ClInclude Include="Header\Pipeline\Drawable\Mesh.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Header\Window.h" />
     <ClInclude Include="Header\WindowsMessageMap.h" />
@@ -251,9 +244,7 @@
     <ClInclude Include="Header\Pipeline\Bindable\Texture.h" />
     <ClInclude Include="Header\Pipeline\Surface.h" />
     <ClInclude Include="Header\Pipeline\Bindable\Sampler.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\Sheet.h" />
     <ClInclude Include="Header\Pipeline\Drawable\SolideSphere.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\SkinnedBox.h" />
     <ClInclude Include="Header\Pipeline\Vertex.h" />
   </ItemGroup>
   <ItemGroup>

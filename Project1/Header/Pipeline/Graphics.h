@@ -8,10 +8,16 @@
 #include <DirectXMath.h>
 #include "../MYException.h"
 #include"DxgiInfoManager.h"
+#include "../Macros/ConditionalNoexcept.h"
+
+namespace Bind
+{
+	class Bindable;
+}
 
 class Graphics
 {
-	friend class Bindable;
+	friend Bind::Bindable;
 public:
 
 	class Exception : public ChiliException
@@ -71,7 +77,7 @@ public:
 	~Graphics();
 	void BeginFrame(float red, float green, float blue) noexcept;
 	void EndFrame(); 
-	void DrawIndexed(UINT count) noexcept;
+	void DrawIndexed(UINT count) noxnd;
 
 	void EnableImgui() noexcept;
 	void DiableImgui() noexcept;

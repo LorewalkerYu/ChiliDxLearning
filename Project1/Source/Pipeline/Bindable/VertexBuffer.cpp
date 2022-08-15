@@ -1,12 +1,14 @@
 #include "../../../Header/Pipeline/Bindable/VertexBuffer.h"
 
 
-
-void VertexBuffer::Bind(Graphics& gfx) noexcept
+namespace Bind
 {
-	// bind vertex buffer to pipeline
-	
-	const UINT offset = 0u;
+	void VertexBuffer::Bind(Graphics& gfx) noexcept
+	{
+		// bind vertex buffer to pipeline
 
-	GetContext(gfx)->IASetVertexBuffers(0u, 1u, pVertexBuffer.GetAddressOf(), &stride, &offset);
+		const UINT offset = 0u;
+
+		GetContext(gfx)->IASetVertexBuffers(0u, 1u, pVertexBuffer.GetAddressOf(), &stride, &offset);
+	}
 }

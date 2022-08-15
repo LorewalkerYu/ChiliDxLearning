@@ -1,7 +1,16 @@
 #pragma once
 #include "../Graphics.h"
 #include <random>
-class Bindable;
+
+
+#include "../../Macros/ConditionalNoexcept.h"
+
+namespace Bind
+{
+	class Bindable;
+	class IndexBuffer;
+}
+
 class Drawable
 {
 	template<class T>
@@ -10,12 +19,11 @@ public:
 	Drawable() = default;
 	Drawable(const Drawable&) = delete;
 	virtual DirectX::XMMATRIX GetTransformXM() const noexcept = 0;
-	void Draw(Graphics& gfx) const noexcept;
-	virtual void Update(float dt) noexcept {};
+	void Draw(Graphics& gfx) const noxnd;
+	virtual void Update(float dt) noexcept
+	{}
 	virtual ~Drawable() = default;
 protected:
-
-	// allow to query bindable instance. in order to change perticular bindable
 	template<class T>
 	T* QueryBindable() noexcept
 	{
@@ -28,12 +36,11 @@ protected:
 		}
 		return nullptr;
 	}
-	void AddBind(std::unique_ptr<Bindable> bind) noexcept;
-	void AddIndexBuffer(std::unique_ptr<class IndexBuffer> ibuf) noexcept;
+	void AddBind(std::unique_ptr<Bind::Bindable> bind) noxnd;
+	void AddIndexBuffer(std::unique_ptr<Bind::IndexBuffer> ibuf) noxnd;
 private:
-	 virtual const std::vector<std::unique_ptr<Bindable>>& GetStaticBinds() const noexcept = 0;
+	virtual const std::vector<std::unique_ptr<Bind::Bindable>>& GetStaticBinds() const noexcept = 0;
 private:
-	const class IndexBuffer* pIndexBuffer = nullptr;
-	std::vector<std::unique_ptr<Bindable>> binds;
-
+	const Bind::IndexBuffer* pIndexBuffer = nullptr;
+	std::vector<std::unique_ptr<Bind::Bindable>> binds;
 };

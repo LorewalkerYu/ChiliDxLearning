@@ -1,5 +1,5 @@
 #include "../../../Header/Pipeline/Drawable/AssTest.h"
-#include "../../../Header/Pipeline/Bindable/BindableBase.h"
+#include "../../../Header/Pipeline/Bindable/BindableCommons.h"
 #include "../../../Header/Pipeline/GFXMacros.h"
 
 #include <assimp/Importer.hpp>
@@ -7,6 +7,8 @@
 #include <assimp/postprocess.h>
 
 #include "../../../Header/Pipeline/Vertex.h"
+
+using namespace Bind;
 
 AssTest::AssTest(Graphics& gfx, std::mt19937& rng,
 	std::uniform_real_distribution<float>& adist,
@@ -23,8 +25,8 @@ AssTest::AssTest(Graphics& gfx, std::mt19937& rng,
 	if (!IsStaticInitialized())
 	{
 	
-		using hw3dexp::VertexLayout;
-		hw3dexp::VertexBuffer vbuf(std::move(
+		using Dvtx::VertexLayout;
+		Dvtx::VertexBuffer vbuf(std::move(
 			VertexLayout{}
 			.Append(VertexLayout::Position3D)
 			.Append(VertexLayout::Normal)

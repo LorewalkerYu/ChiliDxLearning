@@ -5,7 +5,7 @@
 #include "Pipeline/Camera.h"
 #include "Pipeline/Lights/PointLight.h"
 #include <set>
-#include "Pipeline/Drawable/Model.h"
+#include "Pipeline/Drawable/Mesh.h"
 class App
 {
 public:

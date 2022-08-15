@@ -1,5 +1,5 @@
 #include "../../../Header/Pipeline/Drawable/SolideSphere.h"
-#include "../../../Header/Pipeline/Bindable/BindableBase.h"
+#include "../../../Header/Pipeline/Bindable/BindableCommons.h"
 #include "../../../Header/Pipeline/GFXMacros.h"
 #include "../../../Header/Geometry/Sphere.h"
 
@@ -7,7 +7,7 @@
 SolidSphere::SolidSphere(Graphics& gfx, float radius)
 {
 	namespace dx = DirectX;
-
+	using namespace Bind;
 	if (!IsStaticInitialized())
 	{
 		struct Vertex

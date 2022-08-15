@@ -2,14 +2,14 @@
 #include"../Graphics.h"
 #include "../Bindable/ConstantBuffer.h"
 #include "../Drawable/SolideSphere.h"
-
+#include"../../Macros/ConditionalNoexcept.h"
 class PointLight
 {
 public:
 	PointLight(Graphics& gfx, float radius = 0.5f);
 	void SpawnControlWindow() noexcept;
 	void Reset() noexcept;
-	void Draw(Graphics& gfx) const noexcept;
+	void Draw(Graphics& gfx) const noxnd;
 	void Bind(Graphics& gfx, DirectX::FXMMATRIX view) const noexcept;
 private:
 	struct PointLightCBuf
@@ -25,5 +25,5 @@ private:
 private:
 	PointLightCBuf cbData;
 	mutable SolidSphere mesh;
-	mutable PixelConstantBuffer<PointLightCBuf> cbuf;
+	mutable Bind::PixelConstantBuffer<PointLightCBuf> cbuf;
 };
