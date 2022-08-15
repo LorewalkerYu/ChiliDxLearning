@@ -326,6 +326,9 @@
     <ClInclude Include="Header\Pipeline\Drawable\AssTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Vertex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">

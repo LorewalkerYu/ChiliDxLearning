@@ -252,6 +252,7 @@
     <ClInclude Include="Header\Pipeline\Drawable\Sheet.h" />
     <ClInclude Include="Header\Pipeline\Drawable\SolideSphere.h" />
     <ClInclude Include="Header\Pipeline\Drawable\SkinnedBox.h" />
+    <ClInclude Include="Header\Pipeline\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc" />
