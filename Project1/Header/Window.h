@@ -78,8 +78,13 @@ public:
 	static std::optional<int> ProcessMessage();
 	Graphics& Gfx();
 private:
+	void ConfineCursor() noexcept;
+	void FreeCursor() noexcept;
+
 	void HideCursor();
 	void ShowCursor();
+	void EnableImGuiMouse();
+	void DisableImGuiMouse();
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 	LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
