@@ -66,12 +66,14 @@ public:
 	void SetCamera(DirectX::FXMMATRIX cam);
 	DirectX::XMMATRIX GetCamera() const noexcept;
 private:
+	UINT width;
+	UINT height;
 	DirectX::XMMATRIX projection;
 	DirectX::XMMATRIX camera;
 
 public:
 
-	Graphics(HWND hWnd);
+	Graphics(HWND hWnd, int Height, int Width);
 	Graphics(const Graphics&) = delete;
 	Graphics& operator=(const Graphics&) = delete;
 	~Graphics();

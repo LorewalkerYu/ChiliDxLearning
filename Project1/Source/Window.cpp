@@ -77,7 +77,7 @@ Window::Window(int width, int height, const char* name)
 	// Init imgui win32 impl    may cause problem if you have multiple windows
 	ImGui_ImplWin32_Init(hWnd);
 	// Create Graphics object
-	pGfx = std::make_unique<Graphics>(hWnd);
+	pGfx = std::make_unique<Graphics>(hWnd, height, width);
 }
 
 Window::~Window()
