@@ -16,10 +16,8 @@ App::App()
 	wnd(1280, 720, "The Donkey Fart Box"),
 	light(wnd.Gfx())
 {
-	
-
-
 	wnd.Gfx().SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 9.f / 16.f, 0.5f, 40.0f));
+	wnd.DisableCursor();
 }
 
 void App::DoFrame()

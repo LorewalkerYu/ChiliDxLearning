@@ -91,6 +91,18 @@ bool Window::SetTitle(const char* InTitle)
 	return SetWindowText(hWnd, InTitle);
 }
 
+void Window::EnableCursor()
+{
+	cursorEnabled = true;
+	ShowCursor();
+}
+
+void Window::DisableCursor()
+{
+	cursorEnabled = false;
+	HideCursor();
+}
+
 std::optional<int> Window::ProcessMessage()
 {
 	MSG msg;
@@ -112,6 +124,15 @@ Graphics& Window::Gfx()
 	return *pGfx;
 }
 
+void Window::HideCursor()
+{
+	while (::ShowCursor(FALSE) >= 0);
+}
+
+void Window::ShowCursor()
+{
+	while (::ShowCursor(TRUE) < 0);
+}
 LRESULT Window::HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept
 {
 	// use create parameter passed in from CreateWindow() to store window class pointer at WinAPI side

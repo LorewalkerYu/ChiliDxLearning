@@ -74,8 +74,6 @@ meshPtrs(std::move(meshPtrs)),
 name(name)
 {
 	dx::XMStoreFloat4x4(&transform, transform_In);
-
-
 	dx::XMStoreFloat4x4(&appliedTransform, dx::XMMatrixIdentity());
 }
 
