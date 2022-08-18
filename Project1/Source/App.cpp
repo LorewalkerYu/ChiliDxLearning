@@ -1,6 +1,6 @@
 #include "../Header/App.h"
 
-#include "../Header/Pipeline/Drawable/AssTest.h"
+
 #include "../Header/MyMath.h"
 
 // for gdi initialize
