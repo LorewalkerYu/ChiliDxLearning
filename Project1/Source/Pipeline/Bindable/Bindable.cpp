@@ -12,7 +12,7 @@ namespace Bind
 		return gfx.pContext.Get();
 	}
 
-	DxgiInfoManager& Bindable::GetInfoManager(Graphics& gfx) noxnd
+	DxgiInfoManager& Bindable::GetInfoManager(Graphics& gfx) 
 	{
 		return gfx.infoManager;
 	}

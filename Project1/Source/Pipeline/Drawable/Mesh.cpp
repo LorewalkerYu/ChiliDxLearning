@@ -4,8 +4,36 @@
 #include "../../../Header/Pipeline/GFXMacros.h"
 #include "../imgui/imgui.h"
 #include <unordered_map>
+#include <sstream>
 namespace dx = DirectX;
 // Mesh
+
+
+ModelException::ModelException(int line, const char* file, std::string note) noexcept
+	:
+	ChiliException(line, file),
+	note(std::move(note))
+{}
+
+const char* ModelException::what() const noexcept
+{
+	std::ostringstream oss;
+	oss << ChiliException::what() << std::endl
+		<< "[Note] " << GetNote();
+	whatBuffer = oss.str();
+	return whatBuffer.c_str();
+}
+
+const char* ModelException::GetType() const noexcept
+{
+	return "Chili Model Exception";
+}
+
+const std::string& ModelException::GetNote() const noexcept
+{
+	return note;
+}
+
 Mesh::Mesh(Graphics& gfx, std::vector<std::unique_ptr<Bind::Bindable>> bindPtrs)
 {
 	if (!IsStaticInitialized())
@@ -118,7 +146,7 @@ public:
 		if (ImGui::Begin(windowName))
 		{
 			ImGui::Columns(2, nullptr, true);
-			root.ShowTree(nodeIndexTracker, selectedIndex);
+			root.ShowTree(nodeIndexTracker, selectedIndex, pSelectedNode);
 
 			ImGui::NextColumn();
 			if (pSelectedNode != nullptr)
@@ -173,9 +201,15 @@ Model::Model(Graphics& gfx, const std::string fileName)
 	Assimp::Importer imp;
 	const auto pScene = imp.ReadFile(fileName.c_str(),
 		aiProcess_Triangulate |
-		aiProcess_JoinIdenticalVertices
+		aiProcess_JoinIdenticalVertices |
+		aiProcess_ConvertToLeftHanded |
+		aiProcess_GenNormals
 	);
 
+	if (pScene == nullptr)
+	{
+		throw ModelException(__LINE__, __FILE__, imp.GetErrorString());
+	}
 	for (size_t i = 0; i < pScene->mNumMeshes; i++)
 	{
 		meshPtrs.push_back(ParseMesh(gfx, *pScene->mMeshes[i]));
@@ -200,6 +234,7 @@ void Model::ShowWindow(const char* windowName) noexcept
 {
 	pWindow->Show(windowName, *pRoot);
 }
+
 
 std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh)
 {
