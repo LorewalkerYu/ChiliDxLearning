@@ -35,7 +35,6 @@ void App::DoFrame()
 	light.Draw(wnd.Gfx());
 
 	// imgui windows
-	
 	cam.SpawnControlWindow();
 	light.SpawnControlWindow();
 	ShowImguiDemoWindow();
