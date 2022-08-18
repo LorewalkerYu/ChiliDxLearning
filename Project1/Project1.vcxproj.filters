@@ -135,9 +135,6 @@
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Pipeline\Drawable\Mesh.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -288,12 +285,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Pipeline\Drawable\SolideSphere.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\TestObject.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Header\Pipeline\Drawable\AssTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Header\Pipeline\Vertex.h">

@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Pipeline\Drawable\Mesh.cpp" />
-    <ClCompile Include="Source\Pipeline\Drawable\AssTest.cpp" />
     <ClCompile Include="Source\Pipeline\Drawable\SolideSphere.cpp" />
     <ClCompile Include="Source\Pipeline\Lights\PointLight.cpp" />
     <ClCompile Include="Source\Pipeline\Camera.cpp" />
@@ -194,7 +193,6 @@
   <ItemGroup>
     <ClInclude Include="Header\Macros\ConditionalNoexcept.h" />
     <ClInclude Include="Header\Pipeline\Color.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\AssTest.h" />
     <ClInclude Include="Header\Pipeline\Camera.h" />
     <ClInclude Include="Header\GDIPlusManager.h" />
     <ClInclude Include="Header\Geometry\Cone.h" />
@@ -210,7 +208,6 @@
     <ClInclude Include="Header\Pipeline\Drawable\Drawable.h" />
     <ClInclude Include="Header\Pipeline\Bindable\ConstantBuffer.h" />
     <ClInclude Include="Header\Pipeline\Bindable\Bindable.h" />
-    <ClInclude Include="Header\Pipeline\Drawable\TestObject.h" />
     <ClInclude Include="Header\Pipeline\DxgiInfoManager.h" />
     <ClInclude Include="Header\App.h" />
     <ClInclude Include="dxerr\dxerr.h" />
