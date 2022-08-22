@@ -75,6 +75,7 @@ public:
 	bool SetTitle(const char* InTitle);
 	void EnableCursor();
 	void DisableCursor();
+	bool CursorEnabled() const noexcept;
 	static std::optional<int> ProcessMessage();
 	Graphics& Gfx();
 private:
@@ -92,11 +93,12 @@ public:
 	Keyboard kbd;
 	Mouse mouse;
 private:
-	bool cursorEnabled = false;
+	bool cursorEnabled = true;
 	int width;
 	int height;
 	HWND hWnd;
 	std::unique_ptr<Graphics> pGfx;
+	std::vector<BYTE> rawBuffer;
 };
 
 // error exception helper macro

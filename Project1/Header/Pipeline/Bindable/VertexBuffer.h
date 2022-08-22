@@ -27,9 +27,6 @@ namespace Bind
 			sd.pSysMem = vertices.data();
 
 			GFX_THROW_INFO(GetDevice(gfx)->CreateBuffer(&bd, &sd, &pVertexBuffer));
-
-
-
 		}
 		VertexBuffer(Graphics& gfx, const Dvtx::VertexBuffer& vbuf)
 			:

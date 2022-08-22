@@ -25,6 +25,7 @@
 class Mouse
 {
 	friend class Window;
+
 public:
 	struct RawDelta
 	{

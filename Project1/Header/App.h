@@ -16,16 +16,16 @@ public:
 private:
 	void DoFrame();
 	void ShowImguiDemoWindow();
+	void ShowRawInputWindow();
 private:
+
+	int x = 0, y = 0;
 	ImguiManager imgui;
 	Window wnd;
 	MyTimer timer;
-
-
 	float speedFactor = 1.0f;
 	Camera cam;
 	PointLight light;
-
 	Model nano{ wnd.Gfx(),"Models\\nano_hierarchy.gltf" };
 
 };
