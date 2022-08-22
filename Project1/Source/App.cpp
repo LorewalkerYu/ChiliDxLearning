@@ -99,7 +99,7 @@ void App::DoFrame()
 	// imgui windows
 	cam.SpawnControlWindow();
 	light.SpawnControlWindow();
-	ShowImguiDemoWindow();
+	// ShowImguiDemoWindow();
 	nano.ShowWindow();
 
 	// present
