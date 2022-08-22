@@ -16,10 +16,9 @@ public:
 private:
 	void DoFrame();
 	void ShowImguiDemoWindow();
-	void ShowRawInputWindow();
-private:
 
-	int x = 0, y = 0;
+private:
+	bool showDemoWindow = false;
 	ImguiManager imgui;
 	Window wnd;
 	MyTimer timer;
