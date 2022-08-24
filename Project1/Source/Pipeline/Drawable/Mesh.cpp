@@ -283,7 +283,8 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh, const 
 	}
 
 	std::vector<std::unique_ptr<Bind::Bindable>> bindablePtrs;
-	
+
+	bool hasSpecularMap = false;
 	if( mesh.mMaterialIndex >= 0 )
 	{
 		auto& material = *pMaterials[mesh.mMaterialIndex];
@@ -298,6 +299,7 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh, const 
 		if (material.GetTexture(aiTextureType_SPECULAR, 0, &texFileName) == aiReturn_SUCCESS)
 		{
 			bindablePtrs.push_back(std::make_unique<Bind::Texture>(gfx, Surface::FromFile(base + texFileName.C_Str()), 1));
+			hasSpecularMap = true;
 		}
 
 		bindablePtrs.push_back( std::make_unique<Bind::Sampler>( gfx ) );
@@ -311,9 +313,28 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh, const 
 	auto pvsbc = pvs->GetBytecode();
 	bindablePtrs.push_back(std::move(pvs));
 
-	bindablePtrs.push_back(std::make_unique<Bind::PixelShader>(gfx, L"HlslCSO\\PhongPS.cso"));
 
 	bindablePtrs.push_back(std::make_unique<Bind::InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc));
+
+	if (hasSpecularMap)
+	{
+		bindablePtrs.push_back(std::make_unique<Bind::PixelShader>(gfx, L"HlslCSO\\PhongPSSpecMap.cso"));
+	}
+	else
+	{
+		bindablePtrs.push_back(std::make_unique<Bind::PixelShader>(gfx, L"HlslCSO\\PhongPS.cso"));
+
+		struct PSMaterialConstant
+		{
+			float specularIntensity = 1.6f;
+			float specularPower = 50.0f;
+			float padding[2];
+		} pmc;
+		bindablePtrs.push_back(std::make_unique<Bind::PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+	}
+	bindablePtrs.push_back(std::make_unique<Bind::PixelShader>(gfx, L"HlslCSO\\PhongPS.cso"));
+
+
 
 	struct PSMaterialConstant
 	{

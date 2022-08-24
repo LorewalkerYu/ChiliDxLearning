@@ -345,6 +345,7 @@
     <FxCompile Include="Shader\BlendPhongVS.hlsl" />
     <FxCompile Include="Shader\TexturedPhongVS.hlsl" />
     <FxCompile Include="Shader\TexturedPhongPS.hlsl" />
+    <FxCompile Include="Shader\PhongPSSpecMap.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="libs\assimp-vc143-mtd.lib" />
