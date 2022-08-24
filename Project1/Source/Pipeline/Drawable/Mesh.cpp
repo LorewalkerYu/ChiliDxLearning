@@ -283,17 +283,25 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh, const 
 	}
 
 	std::vector<std::unique_ptr<Bind::Bindable>> bindablePtrs;
-
-	if (mesh.mMaterialIndex >= 0)
+	
+	if( mesh.mMaterialIndex >= 0 )
 	{
-		using namespace std::string_literals;
 		auto& material = *pMaterials[mesh.mMaterialIndex];
-		aiString texFileName;
-		material.GetTexture(aiTextureType_DIFFUSE, 0, &texFileName);
-		bindablePtrs.push_back(std::make_unique<Bind::Texture>(gfx, Surface::FromFile("Models\\nano_textured\\"s + texFileName.C_Str())));
-		bindablePtrs.push_back(std::make_unique<Bind::Sampler>(gfx));
-	}
 
+		using namespace std::string_literals;
+		const auto base = "Models\\nano_textured\\"s;
+		aiString texFileName;
+
+		material.GetTexture( aiTextureType_DIFFUSE,0,&texFileName );
+		bindablePtrs.push_back( std::make_unique<Bind::Texture>( gfx,Surface::FromFile( base + texFileName.C_Str() ) ) );
+
+		if (material.GetTexture(aiTextureType_SPECULAR, 0, &texFileName) == aiReturn_SUCCESS)
+		{
+			bindablePtrs.push_back(std::make_unique<Bind::Texture>(gfx, Surface::FromFile(base + texFileName.C_Str()), 1));
+		}
+
+		bindablePtrs.push_back( std::make_unique<Bind::Sampler>( gfx ) );
+	}
 
 	bindablePtrs.push_back(std::make_unique<Bind::VertexBuffer>(gfx, vbuf));
 
