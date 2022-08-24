@@ -2,6 +2,8 @@
 #include "../../../Header/Pipeline/Drawable/Mesh.h"
 #include "../../../Header/Pipeline/Bindable/BindableCommons.h"
 #include "../../../Header/Pipeline/GFXMacros.h"
+#include "../../../Header/Pipeline/Surface.h"
+
 #include "../imgui/imgui.h"
 #include <unordered_map>
 #include <sstream>
@@ -219,7 +221,8 @@ Model::Model(Graphics& gfx, const std::string fileName)
 
 	for (size_t i = 0; i < pScene->mNumMeshes; i++)
 	{
-		meshPtrs.push_back(ParseMesh(gfx, *pScene->mMeshes[i]));
+		meshPtrs.push_back(ParseMesh(gfx, *pScene->mMeshes[i], pScene->mMaterials));
+
 	}
 
 	int nextId = 0;
@@ -243,7 +246,7 @@ void Model::ShowWindow(const char* windowName) noexcept
 Model::~Model() noexcept
 {}
 
-std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh)
+std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh, const aiMaterial* const* pMaterials)
 {
 	namespace dx = DirectX;
 	using Dvtx::VertexLayout;
@@ -253,6 +256,9 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh)
 		.Append(VertexLayout::Position3D)
 		.Append(VertexLayout::Normal)
 	));
+
+
+
 
 	for (unsigned int i = 0; i < mesh.mNumVertices; i++)
 	{
@@ -274,6 +280,17 @@ std::unique_ptr<Mesh> Model::ParseMesh(Graphics& gfx, const aiMesh& mesh)
 	}
 
 	std::vector<std::unique_ptr<Bind::Bindable>> bindablePtrs;
+
+	if (mesh.mMaterialIndex >= 0)
+	{
+		using namespace std::string_literals;
+		auto& material = *pMaterials[mesh.mMaterialIndex];
+		aiString texFileName;
+		material.GetTexture(aiTextureType_DIFFUSE, 0, &texFileName);
+		bindablePtrs.push_back(std::make_unique<Bind::Texture>(gfx, Surface::FromFile("Models\\nano_textured\\"s + texFileName.C_Str())));
+		bindablePtrs.push_back(std::make_unique<Bind::Sampler>(gfx));
+	}
+
 
 	bindablePtrs.push_back(std::make_unique<Bind::VertexBuffer>(gfx, vbuf));
 
