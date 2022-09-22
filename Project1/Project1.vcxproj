@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Macros\ConditionalNoexcept.h" />
+    <ClInclude Include="Header\Pipeline\Bindable\BIndableCodex.h" />
     <ClInclude Include="Header\Pipeline\Color.h" />
     <ClInclude Include="Header\Pipeline\Camera.h" />
     <ClInclude Include="Header\GDIPlusManager.h" />

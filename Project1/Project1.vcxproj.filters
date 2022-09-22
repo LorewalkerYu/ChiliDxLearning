@@ -299,6 +299,9 @@
     <ClInclude Include="Header\Pipeline\Color.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Pipeline\Bindable\BIndableCodex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project1.rc">

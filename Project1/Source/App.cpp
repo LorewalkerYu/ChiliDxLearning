@@ -1,6 +1,4 @@
 #include "../Header/App.h"
-
-
 #include "../Header/MyMath.h"
 
 // for gdi initialize
@@ -26,7 +24,7 @@ void App::DoFrame()
 	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
 	light.Bind(wnd.Gfx(), cam.GetMatrix());
-
+	
 
 	nano.Draw(wnd.Gfx());
 

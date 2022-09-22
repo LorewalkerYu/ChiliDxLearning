@@ -93,7 +93,7 @@ public:
 	Keyboard kbd;
 	Mouse mouse;
 private:
-	bool cursorEnabled = true;
+	bool cursorEnabled = false;
 	int width;
 	int height;
 	HWND hWnd;
